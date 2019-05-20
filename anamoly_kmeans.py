@@ -61,3 +61,24 @@ fig, ax = plt.subplots()
 colors = {0:'blue', 1:'red'}
 ax.scatter(df['principal_feature1'], df['principal_feature2'], c=df["anomaly21"].apply(lambda x: colors[x]))
 plt.show()
+
+
+#isolation forest
+model =  IsolationForest()
+model.fit(data)
+# add the data to the main  
+df['anomaly25'] = pd.Series(model.predict(data))
+df['anomaly25'] = df['anomaly25'].map( {1: 0, -1: 1} )
+print(df['anomaly25'].value_counts())
+# visualisation of anomaly throughout time (viz 1)
+fig, ax = plt.subplots()
+a = df.loc[df['anomaly25'] == 1] #anomaly
+print(a)
+print(a['anomaly25'])
+
+plt.title("IsolationForest")
+b1 = plt.scatter(df['principal_feature1'], df['principal_feature2'], c='green',
+                 s=20,label="normal points")
+b1 =plt.scatter(df.iloc[a.index,0],df.iloc[a.index,1], c='green',s=20,  edgecolor="red",label="predicted outliers")
+plt.legend(loc="upper right")
+plt.show()
