@@ -51,3 +51,8 @@ read_csvfile("./cv_server_data.csv")
 # plt.plot(index, ts, label='some graph')
 # plt.plot(index,ts,markevery=outliers_indices, ls="", marker="o", label="points")
 # plt.show()
+
+
+https://github.com/acumed-training/anomaly-detection/blob/master/notebooks/anomaly.ipynb
+https://www.itl.nist.gov/div898/software/dataplot/refman1/auxillar/esd.htm
+https://www.youtube.com/watch?v=YX0O2dvOWP8
